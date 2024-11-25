@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const navigationHTML = `
         <div class="nav-content">
-            <a href="../../pages/core/index.html" class="nav-logo">Vladimir</a>
             <div class="nav-links">
                 <a href="../../pages/core/index.html">Home</a>
                 <a href="../../pages/core/portfolio.html">Portfolio</a>
