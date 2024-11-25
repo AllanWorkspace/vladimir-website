@@ -44,10 +44,12 @@ footer {
     --background-light: #f9f9f9;
     --text-muted: #666;
     --success-color: #2ecc71;
-    --navbar-bg: #2c5282;  
-    --footer-bg: #1a2639;  
-    --nav-text: #ffffff;   
-    --nav-text-hover: #63b3ed;  
+    --navbar-bg: #2c5282;
+    --footer-bg: #1a2639;
+    --nav-text: #ffffff;
+    --nav-text-hover: #63b3ed;
+    --nav-active: #4299e1;
+    --nav-shadow: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -85,75 +87,73 @@ h3 {
 /* Navigation */
 .navbar {
     background-color: var(--navbar-bg);
-    padding: 1.5rem var(--spacing-unit);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 1.2rem var(--spacing-unit);
+    box-shadow: 0 2px 8px var(--nav-shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: var(--nav-text);
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 0.5rem 1rem;
-}
-
-.navbar a:hover {
-    color: var(--nav-text-hover);
+    transition: all 0.3s ease;
 }
 
 .nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     padding: 0 1rem;
-}
-
-.nav-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-decoration: none;
 }
 
 .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
-    color: var(--text-color);
     text-decoration: none;
+    color: var(--nav-text);
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 1.05rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--nav-text-hover);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
 .nav-links a:hover {
-    color: var(--secondary-color);
+    color: var(--nav-text-hover);
+}
+
+.nav-links a:hover::after {
+    width: 70%;
 }
 
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
+    color: var(--nav-text);
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--primary-color);
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    color: var(--nav-text-hover);
 }
 
 @media (max-width: 768px) {
@@ -176,6 +176,49 @@ h3 {
 
     .nav-links.active {
         display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-content {
+        padding: 0 0.5rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--navbar-bg);
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        box-shadow: 0 4px 6px var(--nav-shadow);
+    }
+
+    .nav-links.active {
+        max-height: 300px;
+        padding: 1rem 0;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover {
+        background-color: var(--nav-active);
     }
 }
 
