@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const navigationHTML = `
         <div class="nav-content">
-            <a href="../../pages/core/index.html" class="nav-logo">Vladimir</a>
+            <a href="index.html" class="nav-logo">Vladimir</a>
             <div class="nav-links">
-                <a href="../../pages/core/index.html">Home</a>
-                <a href="../../pages/core/portfolio.html">Portfolio</a>
-                <a href="../../pages/core/contact.html">Contact</a>
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
             </div>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
